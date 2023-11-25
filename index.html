@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <title>Meteo</title>
      <link rel="stylesheet" href="src/index.css">
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +21,7 @@
     <main> 
     <div class="weather-app-data">
     <div>
-    <h1 class="weather-app-city" id="weather-app-city">Paris</h1>
+    <h1 class="weather-app-city" id="city">Paris</h1>
     <p class="weather-app-details">
         Tuesday 14:49, scattered clouds
         <br/>
@@ -29,7 +30,7 @@
     </div>
     <div class="weather-app-display-container">
     <div class="weather-app-icon">🌦️</div>
-    <div class="weather-app-temperature">12</div>
+    <div class="weather-app-temperature" id="temperature">12</div>
     <div class="weather-app-unit">&#176C</div>
 </div>
 </div>
