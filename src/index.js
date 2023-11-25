@@ -1,11 +1,37 @@
+function formatDate(date)
+{
+    let hours=date.getHours();
+    let mins=date.getMinutes();
+    let days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",];
+    let day=days[date.getDay()];
+    if(mins<10)
+    {
+        mins=`$0{mins}`;
+    }
+    return `${day} ${hours}:${mins}`
+
+}
+
 function refreshWeather(response)
 {
 let temperatureElement=document.querySelector("#temperature");
-let temperature=response.data.temperature.current;
 let cityElement=document.querySelector("#city");
+let descriptionElement=document.querySelector("#description");
+let humidityElement=document.querySelector("#humidity");
+let windElement=document.querySelector("#wind-speed");
+let timeElement=document.querySelector("#time");
+let date=new Date(response.data.time *1000);
+
+let temperature=response.data.temperature.current;
+
 cityElement.innerHTML=response.data.city;
 temperatureElement.innerHTML=Math.round(temperature);
+humidityElement.innerHTML=response.data.temperature.humidity;
+windElement.innerHTML=response.data.wind.speed;
+descriptionElement.innerHTML=response.data.condition.description;
+timeElement.innerHTML=formatDate(date);
 }
+
 function searchCity(city)
 {
     //make an api call and update the interface 
@@ -24,3 +50,4 @@ function handleSearchSubmit(event)
 
 let searchFormElement=document.querySelector("#search-form");
 searchFormElement.addEventListener("submit",handleSearchSubmit);
+searchCity(Paris);
